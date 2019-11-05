@@ -8,8 +8,8 @@ class Base
 {
     public static function defineRoute($argv)
     {
-        $argv = $argv[1];
-        if (isset($argv)) {
+        if (isset($argv[1])) {
+            $argv = $argv[1];
             switch ($argv) {
                 case ($argv == 'save'):
                     $action = 'Save';

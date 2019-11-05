@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\Config;
-use app\models\Directory;
+use App\Exceptions\E404;
 
 class Repository extends Base
 {
@@ -13,6 +13,9 @@ class Repository extends Base
     public function __construct($data)
     {
         $this->data = $data;
+        if (count($this->data) < 3) {
+            throw new E404("Input 3d parameter!");
+        }
         $repository = Config::instance();
         $this->repository = $repository->data['repository'][0];
     }

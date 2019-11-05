@@ -7,7 +7,7 @@ use App\Exceptions\E404;
 
 class Directory implements Repository
 {
-    private $directory = __DIR__ . '/../../repository/';
+    private $directory = __DIR__ . "/../../repository/";
     private $id;
 
     public function save($file)
@@ -15,7 +15,8 @@ class Directory implements Repository
         if (!file_exists($file)) {
             throw new E404('File: ' . $file . ' doesn\'t exist!');
         }
-        if (file_exists($this->directory)) {
+        $dir = file_exists($this->directory) ? : mkdir($this->directory);
+        if ($dir) {
             $path_parts = pathinfo($file);
             $this->id = uniqid();
             copy($file, $this->directory . $this->id . '.' . $path_parts['extension']);

@@ -1,6 +1,6 @@
 #!/usr/local/bin/php
 <?php
-$repository = 'app\models\Directory';
+
 require __DIR__ . '/autoload.php';
 
 use app\controllers\Base;
