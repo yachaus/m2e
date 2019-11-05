@@ -1,0 +1,25 @@
+#!/usr/local/bin/php
+<?php
+$repository = 'app\models\Directory';
+require __DIR__ . '/autoload.php';
+
+use app\controllers\Base;
+use app\controllers\Error;
+
+try {
+    $route = Base::defineRoute($argv);
+    $controller = new $route['controller']($argv);
+    $controller->action($route['action']);
+} catch (\App\Exceptions\E404 $e) {
+    $message = $e->getMessage();
+    $error = new Error($message);
+    $error->action('E404');
+}
+
+
+
+
+
+
+
+
